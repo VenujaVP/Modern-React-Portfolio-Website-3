@@ -1,5 +1,5 @@
 import { motion, useAnimation } from 'framer-motion';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 const testimonials = [
   {
@@ -75,39 +75,40 @@ export default function Reviews() {
   const controls = useAnimation();
   const [isPlaying, setIsPlaying] = useState(true);
 
-  const startAnimation = async (totalWidth) => {
-    await controls.start({
-      x: -totalWidth,
-      transition: {
-        duration: 20,
-        ease: "linear",
-        repeat: Infinity,
-      }
-    });
-  };
-
-  const stopAnimation = () => {
-    controls.stop();
-  };
-
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
     const totalWidth = scrollContainer.scrollWidth / 2;
     
-    if (isPlaying) {
-      startAnimation(totalWidth);
-    }
+    const animate = async () => {
+      if (isPlaying) {
+        await controls.start({
+          x: -totalWidth,
+          transition: {
+            duration: 20,
+            ease: "linear",
+            repeat: Infinity,
+          }
+        });
+      }
+    };
 
-    const handleMouseEnter = () => isPlaying && stopAnimation();
-    const handleMouseLeave = () => isPlaying && startAnimation(totalWidth);
+    animate();
+
+    const handleMouseEnter = () => {
+      if (isPlaying) controls.stop();
+    };
+    
+    const handleMouseLeave = () => {
+      if (isPlaying) animate();
+    };
 
     scrollContainer.addEventListener('mouseenter', handleMouseEnter);
     scrollContainer.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
-      stopAnimation();
+      controls.stop();
       if (scrollContainer) {
         scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
         scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
@@ -177,34 +178,36 @@ export default function Reviews() {
 
         {/* Control buttons */}
         <div className="flex justify-center mt-8 gap-4">
-          <motion.button
+            <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors dark:bg-blue-600 dark:hover:bg-blue-700"
             onClick={() => {
-              stopAnimation();
+              controls.stop();
               setIsPlaying(false);
             }}
-          >
+            >
             Pause
-          </motion.button>
-          <motion.button
+            </motion.button>
+            <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors dark:bg-blue-600 dark:hover:bg-blue-700"
             onClick={() => {
-              startAnimation(scrollRef.current.scrollWidth / 2);
-                x: -scrollRef.current.scrollWidth / 2,
-                transition: {
-                  duration: 20,
-                  ease: "linear",
-                  repeat: Infinity,
-                }
+              setIsPlaying(true);
+              controls.start({
+              x: -scrollRef.current.scrollWidth / 2,
+              transition: {
+                duration: 20,
+                ease: "linear",
+                repeat: Infinity,
+              }
               });
             }}
-          >
+            >
             Play
-          </motion.button>
+            </motion.button>
+
         </div>
       </div>
     </section>
