@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedinIn, FaTwitter, FaEnvelope, FaHeart, FaYoutube } from 'react-icons/fa';
 
 export default function Footer() {
+  // Social links data with names, icons, and corresponding URLs
   const socialLinks = [
     { name: 'GitHub', icon: <FaGithub />, url: 'https://github.com/VenujaVP' },
     { name: 'LinkedIn', icon: <FaLinkedinIn />, url: 'https://linkedin.com/company/nova-boost' },
@@ -10,6 +11,7 @@ export default function Footer() {
     { name: 'Fiverr', icon: <FaEnvelope />, url: 'https://fiverr.com/venuja2002' },
   ];
 
+  // Animation variants for the footer's appearance
   const footerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { 
@@ -22,6 +24,7 @@ export default function Footer() {
     }
   };
 
+  // Animation variants for individual items
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
@@ -29,7 +32,7 @@ export default function Footer() {
 
   return (
     <footer className="relative py-20 overflow-hidden bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
-      {/* Background Pattern */}
+      {/* Background pattern overlay */}
       <div className="absolute inset-0 opacity-10 dark:opacity-20">
         <div className="absolute inset-0 bg-grid-gray-900/[0.1] [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]" />
       </div>
@@ -42,7 +45,7 @@ export default function Footer() {
           viewport={{ once: true }}
           className="grid gap-12 md:grid-cols-2 lg:grid-cols-3"
         >
-          {/* Brand Section */}
+          {/* Brand description section */}
           <motion.div variants={itemVariants} className="space-y-4">
             <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
               DevSpark
@@ -52,8 +55,8 @@ export default function Footer() {
             </p>
           </motion.div>
 
-            {/* Quick Links */}
-            <motion.div variants={itemVariants} className="space-y-4">
+          {/* Quick links section */}
+          <motion.div variants={itemVariants} className="space-y-4">
             <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Quick Links</h4>
             <div className="grid grid-cols-2 gap-2">
               {['Home', 'About', 'Projects', 'Skills', 'Contact'].map((link) => (
@@ -67,10 +70,10 @@ export default function Footer() {
               </motion.a>
               ))}
             </div>
-            </motion.div>
+          </motion.div>
 
-            {/* Social Links */}
-            <motion.div variants={itemVariants} className="space-y-4">
+          {/* Social media links section */}
+          <motion.div variants={itemVariants} className="space-y-4">
             <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Connect</h4>
             <div className="flex space-x-4">
               {socialLinks.map((link) => (
@@ -85,12 +88,12 @@ export default function Footer() {
                 >
                   {link.icon}
                 </motion.a>
-                ))}
-              </div>
-              </motion.div>
-            </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </motion.div>
 
-            {/* Bottom Bar */}
+        {/* Footer bottom bar */}
         <motion.div
           variants={itemVariants}
           className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700"
