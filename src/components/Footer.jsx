@@ -102,7 +102,7 @@ export default function Footer() {
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              © {new Date().getFullYear()} Made with <FaHeart className="mx-1 text-red-500" /> by Your Name
+              © {new Date().getFullYear()} Made with <FaHeart className="mx-1 text-red-500" /> by NOVABOOST
             </motion.p>
             <motion.p className="text-gray-500 dark:text-gray-400 text-sm">
               All rights reserved
