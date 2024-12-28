@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedinIn, FaTwitter, FaEnvelope, FaHeart } from 'react-icons/fa';
+import { FaGithub, FaLinkedinIn, FaTwitter, FaEnvelope, FaHeart, FaYoutube } from 'react-icons/fa';
 
 export default function Footer() {
   const socialLinks = [
-    { name: 'GitHub', icon: <FaGithub />, url: 'https://github.com/yourusername' },
-    { name: 'LinkedIn', icon: <FaLinkedinIn />, url: 'https://linkedin.com/in/yourusername' },
-    { name: 'Twitter', icon: <FaTwitter />, url: 'https://twitter.com/yourusername' },
-    { name: 'Email', icon: <FaEnvelope />, url: 'mailto:your.email@example.com' }
+    { name: 'GitHub', icon: <FaGithub />, url: 'https://github.com/VenujaVP' },
+    { name: 'LinkedIn', icon: <FaLinkedinIn />, url: 'https://linkedin.com/company/nova-boost' },
+    { name: 'LinkedIn', icon: <FaLinkedinIn />, url: 'https://linkedin.com/in/venuja-v11' },
+    { name: 'YouTube', icon: <FaYoutube />, url: 'https://www.youtube.com/@NovaBoost1' },
+    { name: 'Fiverr', icon: <FaEnvelope />, url: 'https://fiverr.com/venuja2002' },
   ];
 
   const footerVariants = {
