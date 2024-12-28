@@ -6,7 +6,7 @@ export default function Footer() {
     { name: 'GitHub', icon: <FaGithub />, url: 'https://github.com/VenujaVP' },
     { name: 'LinkedIn', icon: <FaLinkedinIn />, url: 'https://linkedin.com/company/nova-boost' },
     { name: 'LinkedIn', icon: <FaLinkedinIn />, url: 'https://linkedin.com/in/venuja-v11' },
-    { name: 'YouTube', icon: <FaYoutube />, url: 'https://www.youtube.com/@NovaBoost1' },
+    { name: 'YouTube', icon: <FaYoutube />, url: 'https://youtube.com/@novaboost1?si=UT62PLXyEkAMZz2Y' },
     { name: 'Fiverr', icon: <FaEnvelope />, url: 'https://fiverr.com/venuja2002' },
   ];
 

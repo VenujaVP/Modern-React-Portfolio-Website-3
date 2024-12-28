@@ -7,7 +7,7 @@ export default function Projects() {
       description: "A full-stack e-commerce solution with real-time inventory management",
       image: "/1.jpeg", // Add your project image
       technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-      liveDemo: "/project-demos/ecommerce-demo.mp4",
+      liveDemo: "https://youtube.com/@novaboost1?si=UT62PLXyEkAMZz2Y",
       github: "https://fiverr.com/venuja2002",
     },
     {
@@ -15,7 +15,7 @@ export default function Projects() {
       description: "Cross-platform mobile app for workout tracking and meal planning",
       image: "/2.jpeg", // Add your project image
       technologies: ["React Native", "Firebase", "Redux", "GraphQL"],
-      liveDemo: "/project-demos/fitness-demo.mp4",
+      liveDemo: "https://youtube.com/@novaboost1?si=UT62PLXyEkAMZz2Y",
       github: "https://fiverr.com/venuja2002",
     },
     {
@@ -23,15 +23,7 @@ export default function Projects() {
       description: "Property listing and management system with virtual tours",
       image: "/3.jpeg", // Add your project image
       technologies: ["Next.js", "Prisma", "PostgreSQL", "ThreeJS"],
-      liveDemo: "/project-demos/realestate-demo.mp4",
-      github: "https://fiverr.com/venuja2002",
-    },
-    {
-      title: "Blockchain Marketplace",
-      description: "Decentralized marketplace for digital assets and NFTs",
-      image: "/4.jpeg", // Add your project image
-      technologies: ["Solidity", "Web3.js", "React", "IPFS"],
-      liveDemo: "/project-demos/blockchain-demo.mp4",
+      liveDemo: "https://youtube.com/@novaboost1?si=UT62PLXyEkAMZz2Y",
       github: "https://fiverr.com/venuja2002",
     },
   ]

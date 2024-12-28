@@ -73,43 +73,47 @@ const TestimonialCard = ({ testimonial }) => (
 export default function Reviews() {
   const scrollRef = useRef(null);
   const controls = useAnimation();
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const startAnimation = async (totalWidth) => {
+    await controls.start({
+      x: -totalWidth,
+      transition: {
+        duration: 20,
+        ease: "linear",
+        repeat: Infinity,
+      }
+    });
+  };
+
+  const stopAnimation = () => {
+    controls.stop();
+  };
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
-    // Calculate total scroll width
     const totalWidth = scrollContainer.scrollWidth / 2;
     
-    // Animate the container
-    const animate = async () => {
-      await controls.start({
-        x: -totalWidth,
-        transition: {
-          duration: 20, // Adjust speed here (seconds)
-          ease: "linear",
-          repeat: Infinity,
-        }
-      });
-    };
+    if (isPlaying) {
+      startAnimation(totalWidth);
+    }
 
-    animate();
-
-    // Pause animation on hover
-    const handleMouseEnter = () => controls.stop();
-    const handleMouseLeave = () => animate();
+    const handleMouseEnter = () => isPlaying && stopAnimation();
+    const handleMouseLeave = () => isPlaying && startAnimation(totalWidth);
 
     scrollContainer.addEventListener('mouseenter', handleMouseEnter);
     scrollContainer.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
-      controls.stop();
+      stopAnimation();
       if (scrollContainer) {
         scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
         scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
       }
     };
-  }, [controls]);
+  }, [controls, isPlaying]);
 
   return (
     <section id="testimonials" className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 overflow-hidden">
@@ -177,7 +181,10 @@ export default function Reviews() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors dark:bg-blue-600 dark:hover:bg-blue-700"
-            onClick={() => controls.stop()}
+            onClick={() => {
+              stopAnimation();
+              setIsPlaying(false);
+            }}
           >
             Pause
           </motion.button>
@@ -186,7 +193,7 @@ export default function Reviews() {
             whileTap={{ scale: 0.9 }}
             className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors dark:bg-blue-600 dark:hover:bg-blue-700"
             onClick={() => {
-              controls.start({
+              startAnimation(scrollRef.current.scrollWidth / 2);
                 x: -scrollRef.current.scrollWidth / 2,
                 transition: {
                   duration: 20,
