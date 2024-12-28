@@ -51,25 +51,25 @@ export default function Footer() {
             </p>
           </motion.div>
 
-          {/* Quick Links */}
-          <motion.div variants={itemVariants} className="space-y-4"></motion.div>
+            {/* Quick Links */}
+            <motion.div variants={itemVariants} className="space-y-4">
             <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Quick Links</h4>
             <div className="grid grid-cols-2 gap-2">
               {['Home', 'About', 'Projects', 'Skills', 'Contact'].map((link) => (
-                <motion.a
-                  key={link}
-                  href={`#${link.toLowerCase()}`}
-                  whileHover={{ x: 5 }}
-                  className="text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
-                >
-                  {link}
-                </motion.a>
+              <motion.a
+                key={link}
+                href={`#${link.toLowerCase()}`}
+                whileHover={{ x: 5 }}
+                className="text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+              >
+                {link}
+              </motion.a>
               ))}
             </div>
-          </motion.div>
+            </motion.div>
 
-          {/* Social Links */}
-          <motion.div variants={itemVariants} className="space-y-4"></motion.div>
+            {/* Social Links */}
+            <motion.div variants={itemVariants} className="space-y-4">
             <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Connect</h4>
             <div className="flex space-x-4">
               {socialLinks.map((link) => (
@@ -84,12 +84,12 @@ export default function Footer() {
                 >
                   {link.icon}
                 </motion.a>
-              ))}
-            </div>
-          </motion.div>
-        </motion.div>
+                ))}
+              </div>
+              </motion.div>
+            </motion.div>
 
-        {/* Bottom Bar */}
+            {/* Bottom Bar */}
         <motion.div
           variants={itemVariants}
           className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700"
